@@ -71,7 +71,7 @@ public class BrowserVoteServlet extends HttpServlet {
             voteService.create(new VoteSaveDTO(artistId, genreIds, about));
 
             Cookie myCookie = new Cookie(SENDED_HEADER_NAME, "true");
-            myCookie.setMaxAge(Math.toIntExact(TimeUnit.DAYS.toSeconds(-1)));
+            myCookie.setMaxAge(Math.toIntExact(TimeUnit.DAYS.toSeconds(1)));
             resp.addCookie(myCookie);
 
             req.setAttribute("artist", artistId);
