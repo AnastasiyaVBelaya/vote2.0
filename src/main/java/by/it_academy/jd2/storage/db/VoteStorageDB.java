@@ -59,7 +59,7 @@ public class VoteStorageDB implements IVoteStorage {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Не удалось добавить голос"+e);
         }
         return null;
     }
@@ -76,7 +76,7 @@ public class VoteStorageDB implements IVoteStorage {
                         resultSet.getInt("vote_count"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Не удалось получить информацию об исполнителях"+e);
         }
         return artistVotes;
     }
@@ -92,7 +92,7 @@ public class VoteStorageDB implements IVoteStorage {
                 genreVotes.put(resultSet.getLong("id"), resultSet.getInt("vote_count"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Не удалось получить информацию о жанрах"+e);
         }
         return genreVotes;
     }
@@ -118,7 +118,7 @@ public class VoteStorageDB implements IVoteStorage {
                 votes.add(new VoteResultDTO(artistId, genreIds, about, dateCreated));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Не удалось получить информацию о голосах"+e);
         }
         return votes;
     }
