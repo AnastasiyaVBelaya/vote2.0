@@ -24,7 +24,6 @@ public class VoteService implements IVoteService {
     private final IGenreService genreService;
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-    private final Map<String, LocalDateTime> voteTimestamps = new HashMap<>();
 
     public VoteService(IVoteStorage voteStorage, IArtistService artistService, IGenreService genreService) {
         this.voteStorage = voteStorage;
@@ -113,11 +112,5 @@ public class VoteService implements IVoteService {
                 .collect(Collectors.toList());
     }
 
-    public static VoteService getInstance() {
-        return new VoteService(
-                VoteStorageDBFactory.getInstance(),
-                ArtistServiceFactory.getInstance(),
-                GenreServiceFactory.getInstance()
-        );
-    }
 }
+
